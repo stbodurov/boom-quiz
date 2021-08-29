@@ -1,0 +1,83 @@
+[{
+  "id": 1,
+  "question": "Which is the missing line?", 
+  "description": "item.addEventListener('click', () => {\n\tconsole.log(item.getAttribute('payload'));\n});",
+  "isCode": true,
+  "choices": [{
+    "id": "A", 
+    "answer": "const item = document.querySelector('.item');",
+    "isCorrect": true
+  }, {
+    "id": "B", 
+    "answer": "const item = document",
+    "isCorrect": false
+  }]
+}, {
+  "id": 2,
+  "question": "During program development, software requirements specify", 
+  "description": "",
+  "isCode": false,
+  "choices": [{
+    "id": "A", 
+    "answer": "How the program will accomplish the task",
+    "isCorrect": false
+  }, {
+    "id": "B", 
+    "answer": "What the task is that the program must perform",
+    "isCorrect": true
+  }, {
+    "id": "C", 
+    "answer": "How to divide the task into subtasks",
+    "isCorrect": false
+  }, {
+    "id": "D", 
+    "answer": "How to test the program when it is done",
+    "isCorrect": false
+  }]
+}, {
+  "id": 3,
+  "question": "The external JavaScript file must contain the <script> tag.", 
+  "description": "",
+  "isCode": true,
+  "choices": [{
+    "id": "A", 
+    "answer": "False",
+    "isCorrect": true
+  }, {
+    "id": "B", 
+    "answer": "True",
+    "isCorrect": false
+  }]
+}, {
+  "id": 4,
+  "question": "_______ is the process of finding errors and fixing them within a program", 
+  "description": "",
+  "isCode": false,
+  "choices": [{
+    "id": "A", 
+    "answer": "Compiling",
+    "isCorrect": false
+  }, {
+    "id": "B", 
+    "answer": "Executing",
+    "isCorrect": false
+  }, {
+    "id": "C", 
+    "answer": "Debugging",
+    "isCorrect": true
+  }]
+}, {
+  "id": 5,
+  "question": "What is the correct JavaScript syntax to change the content of the HTML element below?", 
+  "description": "<p id=\"demo\">This is a demonstration.</p>",
+  "isCode": true,
+  "choices": [{
+    "id": "A", 
+    "answer": "document.getElementByName(\"p\").innerHTML = \"Hello World!\";",
+    "isCorrect": false
+  }, {
+    "id": "B", 
+    "answer": "document.getElementById(\"demo\").innerHTML = \"Hello World!\";",
+    "isCorrect": true
+  }]
+}]

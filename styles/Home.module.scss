@@ -14,17 +14,24 @@
   justify-content: flex-start;
   align-items: flex-start;
   background-color: #ffffff;
-  min-width: 50%;
+  width: 50%;
   min-height: 40%;
 }
 
-.questionModal {
+@media only screen and (min-width: 320px) and (max-width: 776px) {
+  .main {
+    width: 90%;
+  }
+}
+
+.modal {
   padding: 30px 2rem;
   width: 100%;
 }
 
-.questionTitle {
+.title {
   font-family: laca, sans-serif;
+  transition: height 2.3s ease;
   font-weight: 600;
   font-style: normal;
   text-transform: uppercase;
@@ -32,8 +39,9 @@
 
 .timeIndicator {
   background-color: #E0013D;
-  width: 90%;
   height: 10px;
+  width: 0%;
+  transition: all 1s ease;
 }
 
 .choices {
@@ -53,6 +61,19 @@
   align-items: center;
   justify-content: flex-start;
   transition: all .2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05) translateZ(0);
+    background-color: #eeeeee;
+  }
+  
+  &:active {
+    background-color: #acacac;
+  
+    div {
+      background-color: #E0013D;
+    }
+  }
 }
 
 .choices div {
@@ -70,17 +91,37 @@
   margin-right: 20px;
 }
 
-.choices > button:hover {
-  transform: scale(1.05) translateZ(0);
-  background-color: #DBDBDB;
+
+
+.questionDesc {
+  margin-bottom: 30px;
 }
 
-.choices > button:active {
-  transform: scale(1.05) translateZ(0);
-  background-color: #acacac;
+.resetButton {
+  width: 100px;
+  height: 40px;
+  background-color: #E0013D;
+  margin-bottom: 10px;
+  padding: 0%;
+  border-style: none;
+  box-sizing: content-box;
+  box-shadow: 5px 10px 10px #0000001A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .2s ease-in-out;
+  font-family: laca, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  font-style: normal;
+  color: #FFFFFF;
 
-  div {
-    background-color: #E0013D;
+  &:hover {
+    transform: scale(1.05) translateZ(0);
+    background-color: #d60039;
+  }
+  
+  &:active {
+    background-color: #af002f;
   }
 }
-
