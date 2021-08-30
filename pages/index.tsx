@@ -73,6 +73,7 @@ export default function Home() {
             <AnimatePresence>
               <motion.div
                 className={styles.modal}
+                key={currentQuestion}
                 initial={{
                   y: 50,
                   opacity: 0
@@ -81,8 +82,8 @@ export default function Home() {
                   y: 0,
                   opacity: 1
                 }}
-                transition={{ ease: "easeOut", duration: 2 }}
-                exit={{ opacity: 0 }}
+                transition={{ ease: "easeOut", duration: 1 }}
+                exit={{ opacity: 0, display: 'none' }}
               >
                 <h1 className={styles.title}>{questions[currentQuestion].question}</h1>
                 <div className={styles.questionDesc}>
