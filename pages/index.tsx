@@ -1,9 +1,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.scss'
 import Prism from "prismjs"
 import questions from './api/questions.json';
+
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Home() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -27,14 +29,7 @@ export default function Home() {
     };
   })
 
-  const [ isMounted, setIsMounted ] = useState(true);
-
-  const shouldRenderChild = useDelayUnmount(isMounted, 500);
-    const mountedStyle = {opacity: 1, transition: "all 500ms cubic-bezier(0, 1, 0.5, 1)"};
-    const unmountedStyle = {opacity: 0.5, transition: "all 500ms cubic-bezier(0, 1, 0.5, 1)"};
-
   function handleClick(isCorrect) {
-    setIsMounted(isMounted);
     setTime(0);
 
     if (isCorrect) {
@@ -63,7 +58,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main} style={isMounted ? mountedStyle : unmountedStyle}>
+      <div className={styles.main}>
         {showScore ? (
           <div className={styles.modal}>
             <Image src="/result.png" alt="Achievement" width="100px" height="100px" />
@@ -74,9 +69,21 @@ export default function Home() {
           </div>
         ) : (
           <>
-              <div className={styles.timeIndicator} style={{ width: `${time / 60 * 100}%` }} />
-              <div className={styles.modal} key={currentQuestion}>
-
+            <div className={styles.timeIndicator} style={{ width: `${time / 60 * 100}%` }} />
+            <AnimatePresence>
+              <motion.div
+                className={styles.modal}
+                initial={{
+                  y: 50,
+                  opacity: 0
+                }}
+                animate={{
+                  y: 0,
+                  opacity: 1
+                }}
+                transition={{ ease: "easeOut", duration: 2 }}
+                exit={{ opacity: 0 }}
+              >
                 <h1 className={styles.title}>{questions[currentQuestion].question}</h1>
                 <div className={styles.questionDesc}>
                   <pre>
@@ -98,30 +105,11 @@ export default function Home() {
                     </button>
                   ))}
                 </div>
-              </div>
-            </>
+              </motion.div>
+            </AnimatePresence>
+          </>
         )}
-      </main>
+      </div>
     </div>
   )
-}
-
-
-function useDelayUnmount(isMounted: boolean, delayTime: number) {
-  const [ shouldRender, setShouldRender ] = useState(false);
-
-  useEffect(() => {
-      let timeoutId: any;
-      if (isMounted && !shouldRender) {
-          setShouldRender(true);
-      }
-      else if(!isMounted && shouldRender) {
-          timeoutId = setTimeout(
-              () => setShouldRender(false), 
-              delayTime
-          );
-      }
-      return () => clearTimeout(timeoutId);
-  }, [isMounted, delayTime, shouldRender]);
-  return shouldRender;
 }
