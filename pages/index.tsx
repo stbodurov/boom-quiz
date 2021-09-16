@@ -20,7 +20,7 @@ export default function Home() {
       setTime(time - 1);
     }, 1000);
 
-    if (time === 60) {
+    if (time === 0) {
       handleClick(false);
     }
 
