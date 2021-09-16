@@ -11,13 +11,13 @@ export default function Home() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
-  const [time, setTime] = useState(0);
+  const [time, setTime] = useState(30);
 
   useEffect(() => {
     Prism.highlightAll();
 
-    const interval = setTimeout(() => {
-      setTime(time + 1);
+    const interval = setInterval(() => {
+      setTime(time - 1);
     }, 1000);
 
     if (time === 60) {
@@ -30,7 +30,7 @@ export default function Home() {
   })
 
   function handleClick(isCorrect) {
-    setTime(0);
+    setTime(30);
 
     if (isCorrect) {
       setScore(score + 1);
@@ -45,6 +45,7 @@ export default function Home() {
   }
 
   function handleReset() {
+    setTime(30);
     setScore(0);
     setShowScore(false);
     setCurrentQuestion(0);
@@ -69,7 +70,7 @@ export default function Home() {
           </div>
         ) : (
           <>
-            <div className={styles.timeIndicator} style={{ width: `${time / 60 * 100}%` }} />
+            <div className={styles.timeIndicator} style={{ width: `${time / 30 * 100}%` }} />
             <AnimatePresence>
               <motion.div
                 className={styles.modal}
