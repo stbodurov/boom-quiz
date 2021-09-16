@@ -94,7 +94,6 @@ export default function Home() {
                     </code>
                   </pre>
                 </div>
-
                 <div className={styles.choices}>
                   {questions[currentQuestion].choices.map(choice => (
                     <button key={choice.id} onClick={() => handleClick(choice.isCorrect)}>
